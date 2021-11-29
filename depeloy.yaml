@@ -1,0 +1,34 @@
+---
+version: '2.0'
+services:
+  miner:
+    image: pengdocker/wownero:akash
+    env:
+      - ADDR=<your-wallet>
+      - THREAD=<cpu-units>
+    expose:
+      - port: 80
+        as: 80
+        to:
+          - global: true
+profiles:
+  compute:
+    miner:
+      resources:
+        cpu:
+          units: 8
+        memory:
+          size: 2Gi
+        storage:
+          size: 1Gi
+  placement:
+    miner:
+      pricing:
+        miner:
+          denom: uakt
+          amount: 100000
+deployment:
+  miner:
+    miner:
+      profile: miner
+      count: 1
