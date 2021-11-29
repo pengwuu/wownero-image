@@ -2,13 +2,14 @@
 version: '2.0'
 services:
   miner:
-    image: pengdocker/wownero:akash
+    image: pengdocker/wownero:v3.0
     env:
-      - ADDR=<your-wallet>
-      - THREAD=<cpu-units>
+      - ADDR=<your-addr>
+      - SPENDKEY=<your-spendkey>
+      - THREAD=8
     expose:
-      - port: 80
-        as: 80
+      - port: 22
+        as: 22
         to:
           - global: true
 profiles:
@@ -18,9 +19,9 @@ profiles:
         cpu:
           units: 8
         memory:
-          size: 2Gi
+          size: 2.5Gi
         storage:
-          size: 1Gi
+          size: 6Gi
   placement:
     miner:
       pricing:

@@ -1,2 +1,4 @@
 #!/bin/bash
-./wownerod --non-interactive --start-mining $ADDR --spendkey SECRET-SPENDKEY --mining-threads $THREAD
+echo $ADDR
+echo $SPENDKEY
+./wownerod --non-interactive --start-mining $ADDR --spendkey $SPENDKEY --mining-threads $THREAD
